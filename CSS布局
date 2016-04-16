@@ -1,0 +1,172 @@
+CSS布局
+双列布局，某一列自适应宽度。
+若我们想做下图所示的Css布局：
+
+
+自适应双列布局
+
+需要实现的功能为，左边能够自适应宽度，右边固定。
+本布局可以使用浮动+负边距来实现。
+给左边元素加一个父级，同时左元素在父级元素内空出右边元素的位置。
+不设定左边元素宽度，使左右两列都进行浮动，右边元素margin-left为本身的宽度。
+代码为
+Html:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Bin</title>
+</head>
+<body>
+<div class="wrap">
+<div class="left">我是一个自适应宽度的左边输入框,我支持自动换行不会被右边导航栏所覆盖内容。</div>
+</div>
+<div class="right">我是固定右边导航栏</div>
+</body>
+</html>
+
+Css:
+body{
+    width:500px;
+    margin:10px;
+    border:dashed 1px orange;
+    overflow:hidden;  
+}
+.wrap{
+  width: 100%;
+  float: left;
+}
+  .left{
+  background: #FCD975;
+  height: 400px;
+  margin-right: 100px;
+}
+  .right{
+  background: #591804;
+  color: white;
+  width: 100px;
+  height: 400px;
+  float: left;
+  margin-left: -100px;
+}
+
+3列圣杯布局
+
+圣杯布局
+
+利用父元素的Padding设置，为两边的元素卡出各自的位置
+再利用margin负边距实现圣杯布局。
+具体代码如下
+html:
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<div class="ct">
+<div class="main"></div>
+<div class="aside">side1</div>
+<div class="extra">side2</div>
+</div>
+</body>
+</html>
+
+css:
+.ct{
+  border: 1px solid;
+  padding: 0 100px;
+}
+.ct:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.main{
+  width: 100%;
+  height: 200px;
+  background: red;
+  float: left;
+}
+.aside{
+  position: relative;
+  left: -100px;
+  width: 100px;
+  height: 100px;
+  background: blue;
+  float: left;
+  opacity: 0.8;
+  margin-left: -100%;
+}
+.extra{
+  position:relative;
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  float: left;
+  margin-left: -100px;
+  left: 100px;
+}
+
+3列双飞翼布局
+
+3列双飞翼布局
+
+为中间的列元素wrap包裹一层父元素，在不给wrap设宽度的情况下，通过margin边距在父元素中分割出两边元素的空间，达到3列布局的目的。
+代码如下
+html：
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Bin</title>
+</head>
+<body>
+<div class="ct">
+<div class="main">
+<div class="wrap">ffffff</div>
+</div>
+<div class="aside">side1</div>
+<div class="extra">side2</div>
+</div>
+</body>
+</html>
+
+css:
+.ct{
+  border: 1px solid;
+}
+.ct:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.main{
+  width: 100%;
+  height: 200px;
+  float: left;
+}
+.wrap{
+  height: 200px;
+  background: pink;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.aside{
+  width: 100px;
+  height: 100px;
+  background: blue;
+  float: left;
+  margin-left: -100%;
+}
+.extra{
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  float: left;
+  margin-left: -100px;
+}
+
+文／饥人谷_Pizza（简书作者）
+原文链接：http://www.jianshu.com/p/04918672b8b0
